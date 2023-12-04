@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //批量赋值
+const [hr,lx,mi,fz] = ["海尔","小米","联想","方正"]
+
+console.log(hr,lx,mi,fz)
+
+// 从箭头函数中拿到数值并赋值给两个字母n,m
+let fn =(num1,num2)=>{
+ 
+console.log(num1,num2)
+}
+
+fn(100,70)
+
+//箭头函数返回两个数用变量接收，再进行数组结构赋值，调换值
+let fh =(n1,n2)=>{return fh}
+fn(200,300)
+
+
+let fk=function fk(){return[20,30]}
+let [o,yy]=fk()
+console.log(o)
+console.log(yy)
+
+//fl is not a function or its return value is not iterable-fl不是函数或其返回值不可迭代
+// let fl=()=>{return 150,250}
+// const [kk,ll] = fl()
+// console.log((kk))
+// console.log((ll))
+// // ;[kk,ll]=[ll,kk]
+
+
+
+
+// 数组对象结构：1.变量的命名规则和修改 2.括号的对应 
+
+//对象const pig={name:"佩奇",age:6}解构
+const pig={name:"佩奇",age:6}
+
+const{name,age}={name:"佩奇",age:6}
+
+console.log(name,age)
+//将pig对象中的name-uname，age1-age2输出
+const{name:uname,age1:age2}={name:"佩奇",age1:6}
+console.log(uname,age)
+
+const goods=[
+    {
+        goodsname:"小米",
+        price:1999
+    }
+]
+const[{goodsname,price}]=goods
+console.log(goodsname,price)
+
+
+
+
+
+for(let i=1;i<=8;i++){
+            console.log(i);
+        }
+
+
+
+        // function a(){
+        //     let b = 100
+        //     function c(){
+        //         console.log(b)
+        //     }
+        //     return c 
+        // }
+        // a()
+
+
+        // 常见的闭包的形式   外部可以访问使用 函数内部的变量
+    function outer() {
+      let a = 100
+      function fn() {
+        console.log(a)
+      }
+      return fn
+    }
+outer()
+
+
+function getMaxFromArr(numArray){
+    var maxNum = 0;
+    for(var i =0;i < numArray.length;i++){
+        if(numArray[i] > maxNum){
+            maxNum = numArray[i];
+        }
+    }
+    return maxNum;
+}
+
+var arrNum = [5,2,99,101,67,77];
+var maxN = getMaxFromArr(arrNum); // 这个实参是个数组 getMaxFromArr求最大值
+console.log(maxN);
+
+
+//批量赋值
+const [x,b, c] = [100, 60, 80]
+console.log(x);
+console.log(b);
+console.log(c);
+
+
+//交互赋值
+let g =1
+let h =2;
+[g,h]=[h,g]
+console.log(g,h)
+    </script>
+    <!-- <script src="./js文件"></script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+<head>
+<script type="text/javascript">
+function getElements()
+  {
+  var x=document.getElementsByTagName("input");
+  alert(x.length);
+  }
+</script>
+</head>
+<body>
+
+<input name="myInput" type="text" size="20" /><br />
+<input name="myInput" type="text" size="20" /><br />
+<input name="myInput" type="text" size="20" /><br />
+<br />
+<input type="button" onclick="getElements()"
+value="How many input elements?" />
+
+<script>
+
+  //substring(开头，结尾)    （]
+const str="我今晚一定不熬夜"
+let a= str.substring(0,5)
+let b=str.substring(6,8)
+console.log(a+b);//我今晚一定熬夜
+
+
+//1. split("把原字符串的某值进行删除以此作为分割--有多少个分割多少个 ") 把字符串 转换为 数组  和 join("增加分割符--将所有的逗号全部换为自定义分隔符") -数组转化为字符串相反
+
+const d="今晚-没饭吃"
+console.log(d)//今晚-没饭吃
+
+let h =d.split("晚")//['今', '-没饭吃']
+let n=d.split("-")//['今晚', '没饭吃']
+console.log(h)
+console.log(n)
+
+const f=["吃饭","不吃饭",123,456]//     ['吃饭', '不吃饭', 123, 456]
+console.log(f)
+let m= f.join("/")//      吃饭/不吃饭/123/456
+console.log(m)
+
+
+
+
+
+</script>
+
+</body>
+</html>

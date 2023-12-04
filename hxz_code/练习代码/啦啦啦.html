@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 实质就是子类的构造函数继承 父类的构造函数的内容(通过不同的对象追加) -->
+    <script>
+
+ // 构造函数  new 出来的内容 结构一样，但是对象不一样--防止追加内容出现赋值问题
+function Person() {
+      this.eyes = 2
+      this.head = 1
+      this.foot = 100
+
+    }
+//构造 女的-函数  继承
+
+function Woman() {
+  
+}
+// 继承方法-------------子类的原型 =  new 父类
+Woman.prototype = new Person() 
+ //   继承后-指向改变-----------指回原来的构造函数
+Woman.prototype.constructor = Woman
+ //对象增加方法
+Woman.prototype.feature = function () {
+      console.log("洗澡水真鸡儿烫")
+    }
+    const xxx = new Woman()
+    console.log(xxx)
+
+
+    function Man() {
+
+}
+
+Man.prototype = new Person()             //--继承
+Man.prototype.constructor = Man          //指向
+const kk = new Man  ()                          
+console.log(kk)
+
+// 原型链
+
+function Person() {
+
+}
+const ldh = new Person()
+
+
+
+console.log(ldh instanceof Person)  //ture  instanceof查找是否在原型链上
+console.log(ldh instanceof Object)  //ture
+console.log(ldh instanceof Array)  ///Flase  因为array.prototype不在ldh的原型链上
+console.log([1, 2, 3] instanceof Array)  //ture
+console.log(Array instanceof Object)  //ture  万物皆为对象
+
+//浅拷贝
+
+const obj1 = {
+      uname: 'pink',
+      age: 18,
+      family: {
+        baby: '小pink'
+      }
+    }
+    // 浅拷贝
+    // const o = { ...obj }        实质就是运用了展开运算符
+    // console.log(o)
+    // o.age = 20
+    // console.log(o)
+    // console.log(obj)
+
+
+
+    const m = {}        
+    Object.assign(m, obj1)  //把obj放在o里面
+    m.age = 20 
+    m.family.baby = '老pink'  //复杂数据类型，当拷贝对象为一个对象时出问题
+    console.log(m)
+    console.log(obj1)
+
+
+// 浅拷贝：拷贝的是地址
+// 浅拷贝：如果简单数据类型拷贝值，引用数据类型拷贝地址(简单理解:如果是单层对象，没问题，多层对象拷贝就会出现问题)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 深拷贝
+
+const obj={
+name1:"hxz",
+name2:"hxd",
+name3:"hxh",
+names:["hxz","hxd","hxh"],
+sisiters:{
+    sisiter1:"hzl",
+    sisiter2:"hzy"
+}
+}
+const o={}
+//拷贝函数--先写array再写object
+
+function coopy (newObj,oldObj){//使用两个形参
+    for(let a in oldObj){
+        if (oldObj[a] instanceof Array) {
+            newObj[a] = []
+            //  newObj[a] 接收 []  names
+            //  oldObj[a]   ["hxz","hxd","hxh"]
+            coopy(newObj[a], oldObj[a])}//
+
+       
+        else if (oldObj[a] instanceof Object) {
+            newObj[a] = {}
+            //  newObj[a] 接收 []  names
+            //  oldObj[a]   ["hxz","hxd","hxh"]
+            coopy(newObj[a], oldObj[a])
+        }//
+        else {
+          //  k  属性名 uname age    oldObj[k]  属性值  18
+          // newObj[k]  === o.uname  给新对象添加属性
+          newObj[a] = oldObj[a]
+
+       
+    }
+  }
+}
+coopy(o,obj)//调用函数 
+console.log(obj)
+o.name1="hxz1"//简单数据类型修改
+o.names[0]="hxz11"//数组修改
+o.sisiters.sisiter1="hzl_sb"//对象修改
+console.log(o)
+
+// 深拷贝总结:
+//  对象.属性-存的是对象  有变量采取中括号的形式object[o]
+// {}和[]处理方式基本一致，处理完以后最后进行给新对象简单数据类型的添加  newObj[a] = oldObj[a]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
+<!-- 1.写在原型对象(prototype)里的属性，每new一个对象出来都能访问       2. 只要是对象就有__proto__    3.只要是原型对象(prototype)就有constructor   -->
